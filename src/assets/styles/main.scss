@@ -1,19 +1,16 @@
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
   margin: 0;
-  position: relative;
-  font-weight: normal;
+  padding: 0;
 }
 
 body {
+  @include font-body();
   min-height: 100vh;
   color: $light;
   background: $dark;
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  @include font-body();
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -27,32 +24,15 @@ body {
 }
 
 main {
-  // background-color: $vt-c-text-dark-2;
+  background-color: $light;
 
   section {
     min-height: 300px;
     border: 1px solid red;
-    // background-color: $blue;
+    background-color: $tertiary;
 
-    &:not(:first-child) {
-      // background-color: $light-blue;
+    &:nth-child(even) {
+      background-color: tone(tertiary, darker);
     }
   }
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
- 
 }
