@@ -1,9 +1,11 @@
 <template>
-    <ul class="nav--list">
-        <li v-for="item in menu" class="nav--item">
-            <a class="nav--link" @click="scrollToTarget(item.target)">{{ item.name }}</a>
-        </li>
-    </ul>
+    <nav>
+        <ul class="nav--list">
+            <li v-for="item in menu" class="nav--item">
+                <a class="nav--link" @click="scrollToTarget(item.target)">{{ item.name }}</a>
+            </li>
+        </ul>
+    </nav>
 </template>
 
 <script>
@@ -25,4 +27,18 @@ export default {
     }
 }
 </script>
+
+
+<style lang="scss">
+    nav {
+        .nav--list {
+            @extend .flexxer__h;
+            color: $blushred;
+
+            .nav--item {
+                margin: 0 calc($gap__h * 1.25);
+            }
+        }
+    }
+</style>
 
