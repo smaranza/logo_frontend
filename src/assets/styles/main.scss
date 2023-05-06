@@ -1,17 +1,42 @@
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
   font-weight: normal;
 }
 
+body {
+  min-height: 100vh;
+  color: $light;
+  background: $dark;
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  @include font-body();
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  #app {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 main {
-  background-color: var(--vt-c-text-dark-2);
+  // background-color: $vt-c-text-dark-2;
 
   section {
     min-height: 300px;
     border: 1px solid red;
+    // background-color: $blue;
+
+    &:not(:first-child) {
+      // background-color: $light-blue;
+    }
   }
 }
 
@@ -29,14 +54,5 @@ a,
 }
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+ 
 }

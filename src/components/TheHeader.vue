@@ -17,6 +17,6 @@ import BaseNav from '@components/base/BaseNav.vue'
         position: sticky;
         top: 0;
         z-index: 5000;
-        background-color: $blue;
+        // background-color: $color-background;
     }
 </style>

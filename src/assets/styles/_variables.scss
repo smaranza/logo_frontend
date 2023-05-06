@@ -1,78 +1,167 @@
-$blue: blue;
+/* --------------------- */
+/* --- COLOR PALETTE --- */
+/* --------------------- */
 
+$white: #ffffff;
+$black: #000000;
+$light: #ffffff;
+$dark: #272727;
+$blushred: #f07c79;
+$ochreyellow: #ffed65;
+$tealblue: #44e0dc;
 
-/* color palette from <https://github.com/vuejs/theme> */
-:root {
-    --vt-c-white: #ffffff;
-    --vt-c-white-soft: #f8f8f8;
-    --vt-c-white-mute: #f2f2f2;
-  
-    --vt-c-black: #181818;
-    --vt-c-black-soft: #222222;
-    --vt-c-black-mute: #282828;
-  
-    --vt-c-indigo: #2c3e50;
-  
-    --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-    --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-    --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-    --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-  
-    --vt-c-text-light-1: var(--vt-c-indigo);
-    --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-    --vt-c-text-dark-1: var(--vt-c-white);
-    --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
-  }
-  
-  /* semantic color variables for this project */
-  :root {
-    --color-background: var(--vt-c-white);
-    --color-background-soft: var(--vt-c-white-soft);
-    --color-background-mute: var(--vt-c-white-mute);
-  
-    --color-border: var(--vt-c-divider-light-2);
-    --color-border-hover: var(--vt-c-divider-light-1);
-  
-    --color-heading: var(--vt-c-text-light-1);
-    --color-text: var(--vt-c-text-light-1);
-  
-    --section-gap: 160px;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --color-background: var(--vt-c-black);
-      --color-background-soft: var(--vt-c-black-soft);
-      --color-background-mute: var(--vt-c-black-mute);
-  
-      --color-border: var(--vt-c-divider-dark-2);
-      --color-border-hover: var(--vt-c-divider-dark-1);
-  
-      --color-heading: var(--vt-c-text-dark-1);
-      --color-text: var(--vt-c-text-dark-2);
+$colors: (
+    "white": $white,
+    "black": $black,
+    "light": $light,
+    "dark": $dark,
+    "primary": $blushred,
+    "secondary": $ochreyellow,
+    "tertiary": $tealblue,
+);
+
+$tones: (
+    "lightest": rgba(255, 255, 255, 100%),
+    "lighter": rgba(255, 255, 255, 78%),
+    // "base": rgba(255, 255, 255, 0%),
+    "darker": rgba(0, 0, 0, 78%),
+    "darkest": rgba(0, 0, 0, 100%)
+);
+
+$opacities: (
+    '10': .1,
+    '20': .2,
+    '30': .3,
+    '40': .4,
+    '50': .5,
+    '60': .6,
+    '70': .7,
+    '80': .8,
+    '90': .9,
+    '100': 1,
+);
+
+@function tone($color, $tone) {
+    @if map-has-key($colors, $color) {
+        @if map-has-key($tones, $tone) {
+            @return mix($color, $tone);
+        }
+        @return $color;
     }
-  }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
+    @return null;
+}
+
+
+
+// @function color($color, $tone, $opacity) {
+//     // find base color
+//     @if map-has-key($colors, $color) { // find color
+//         $color: map-get($colors, $color); // base color
+//             // find base tone
+//             @if map-has-key($tones, $tone) { // find tone
+//                 $tone: map-get($tones, $tone);
+//                 $color-tone: mix($color, $tone); // color + tone
+                
+//                 @if map-has-key($opacities, $opacity) { // find opacity
+//                     $opacity: map-get($opacities, $opacity);
+                    
+//                     @return rgba( $base-color, $opacity); // color + tone + transparency
+//                 }
+//                 @return $color-tone;
+//             }
+//         @return $color;
+//     }
+//     @return null;
+// }
+
+// :root {
+//     @each $color, $hex in $colors {
+//         @each $lightness, $tone, $percentage in $tones {
+//             --#{$color}-#{$lightness}: #{mix( $hex, $tone, $percentage)};
+//         }
+//     }
+// }
+
+// $palette: ();
+// $palette: map.set($palette, #{$color}-#{$lightness}, var(--#{$color}-#{$lightness}))
+// @debug map-values($palette);
+
+
+/* ------------------ */
+/* --- TYPOGRAPHY --- */
+/* ------------------ */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&family=Roboto:wght@400;700&display=swap");
+
+$f-family-sans: "Roboto", sans-serif;
+$f-family-mono: "Roboto Mono", monospace;
+
+$f-weight-regular: 400;
+$f-weight-medium: 500;
+$f-weight-bold: 700;
+
+$f-size-base: 1rem; // 16px
+
+$f-size-xs:  $f-size-base * 0.875; // 14px 
+$f-size-s:   $f-size-base; 
+$f-size-m:   $f-size-base * 1.25; // 20px
+$f-size-l:   $f-size-base * 1.5; // 24px
+$f-size-xl:  $f-size-base * 2.125; // 34px
+$f-size-xxl: $f-size-base * 3.75; // 60px
+
+// $typography: 
+//     "body" $f-family-sans $f-weight-regular $f-size-s,
+//     "headline" $f-family-mono $f-weight-bold $f-size-l,
+//     "display" $f-family-mono $f-weight-bold $f-size-xxl,
+//     "cta" $f-family-sans $f-weight-bold $f-size-m,
+// ;
+
+@mixin font-body() {
+    font-family: $f-family-sans;
+    font-weight: $f-weight-regular;
+    font-size: $f-size-s;
+    line-height: 1.5;
+}
+
+@mixin font-headline() {
+    @include font-body();
+    font-family: $f-family-mono;
+    font-weight: $f-weight-bold;
+    font-size: $f-size-l;
+    line-height: 1.25;
+}
+
+@mixin font-display() {
+    @include font-headline();
+    font-size: $f-size-xxl;
+    line-height: 1.33;
+}
+
+@mixin font-cta() {
+    @include font-body();
+    font-weight: $f-weight-bold;
+    font-size: $f-size-m;
+}
+
+h2 {
+    @include font-display();
+}
+
+h3, h4 {
+    @include font-headline();
+}
+
+p, span {
+    @include font-body();
     margin: 0;
-    position: relative;
-    font-weight: normal;
-  }
-  
-  body {
-    min-height: 100vh;
-    color: var(--color-text);
-    background: var(--color-background);
-    transition: color 0.5s, background-color 0.5s;
-    line-height: 1.6;
-    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-      Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    font-size: 15px;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
+    padding: 0;
+}
+
+a, button {
+    @include font-cta();;
+    text-decoration: none;
+}
+
+/* -------------- */
+/* --- LAYOUT --- */
+/* -------------- */
