@@ -14,7 +14,7 @@ export default {
     },
     data(){
         return {
-            iconSrc: defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/icons/icon-${this.name}.svg`))
+            iconSrc: defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/graphics/icons/${this.name}.svg`))
         }
     } 
 }

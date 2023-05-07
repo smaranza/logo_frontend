@@ -18,7 +18,7 @@ import BaseNav from '@components/base/BaseNav.vue'
         top: 0;
         z-index: 5000;
         background-color: rgba($dark, .80);
-        padding: 30px 0;
+        padding: $gap__v__l 0;
 
         .header-inner {
             align-items: center;

@@ -1,8 +1,29 @@
+/* --------- MAIN --------- */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+body {
+    @include font-body();
+    min-height: 100vh;
+    color: $light;
+    // background-color: $dark;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    #app {
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* --------- STANDARD TAGS --------- */
 
 h2 {
     @include font-display();
@@ -11,6 +32,7 @@ h2 {
 h3,
 h4 {
     @include font-headline();
+    color: $primary;
 }
 
 p,
@@ -38,41 +60,20 @@ li {
     list-style: none;
 }
 
-body {
-    @include font-body();
-    min-height: 100vh;
-    color: $light;
-    background: $dark;
-    transition: color 0.5s, background-color 0.5s;
-    line-height: 1.6;
+/* --------- CUSTOM TAGS --------- */
 
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    #app {
-        margin: 0 auto;
-        width: 100%;
-        height: 100%;
+@for $i from 1 through 12 {
+    .gridder-span__#{$i} {
+        @include gridder-span(#{$i});
     }
-}
-
-main {
-    background-color: $light;
-
-    section {
-        min-height: 300px;
-        border: 1px solid red;
-        background-color: $tertiary;
-
-        &:nth-child(even) {
-            background-color: tone(tertiary, darker);
-        }
+    
+    .gridder-start__#{$i} {
+        @include gridder-start(#{$i});
     }
 }
 
 .block-list {
-    @extend .flexxer;
+    @include flexxer;
 
     .list-entry {
         margin-right: calc($gap__v / 2);
@@ -81,4 +82,34 @@ main {
             margin-right: calc($gap__v / 2);
         }
     }
+}
+
+.flexxer {
+    &__h {
+        @include flexxer(h);
+    }
+    
+    &__v {
+        @include flexxer(v);
+    }
+
+    @include flexxer(h);
+}
+
+.wrapper {
+    &__full {
+        @include wrapper(full);
+    }
+
+    @include wrapper(boxed);
+}
+
+.gridder {
+    @include gridder;
+}
+
+
+
+.flexxer {
+    @include flexxer;
 }

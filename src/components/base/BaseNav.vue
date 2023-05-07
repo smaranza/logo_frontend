@@ -31,12 +31,17 @@ export default {
 
 <style lang="scss">
     nav {
+        margin-right: $gap__h__xl;
+        
         .nav--list {
-            @extend .flexxer__h;
-            color: $blushred;
+            @include flexxer(h);
 
             .nav--item {
-                margin: 0 calc($gap__h * 1.25);
+                margin: 0 $gap__h__m;
+                font-family: $f-family__mono;
+                font-weight: $f-weight__medium;
+                font-size: $f-size__m;
+                text-transform: uppercase;
             }
         }
     }

@@ -1,6 +1,4 @@
-/* -------------- */
-/* --- LAYOUT --- */
-/* -------------- */
+/* --------- LAYOUT --------- */
 
 $breakpoint-mobile__ex: 960px;
 $breakpoint-mobile__in: $breakpoint-mobile__ex + 1px;
@@ -14,7 +12,7 @@ $gap__v__xs: calc($gap__v / 2); // 8px
 $gap__v__s:  $gap__v;           // 16px
 $gap__v__m:  $gap__v * 1.25;    // 20px
 $gap__v__l:  $gap__v * 2;       // 32px
-$gap__v__xl: $gap__v * 3.125;   // 32px
+$gap__v__xl: $gap__v * 3.125;   // 50px
 
 $gap__h__xs: calc($gap__h / 2); // 10px
 $gap__h__s:  $gap__h;           // 20px
@@ -22,23 +20,23 @@ $gap__h__m:  $gap__h * 1.25;    // 25px
 $gap__h__l:  $gap__h * 2;       // 40px
 $gap__h__xl: $gap__h * 3.25;    // 65px
 
-.wrapper {
+@mixin wrapper($mode: boxed) {
     display: block;
     margin: 0 auto;
 
-    // boxed default
-    width: 92%;
-    max-width: 1320px;
-
-    &--full {
+    @if $mode == full {
         width: 100%;
         padding: 0 4%;
+
+    } @else {
+        width: 92%;
+        max-width: 1320px;
     }
 }
 
-.gridder {
+@mixin gridder {
     display: flex;
-    column-gap: $gap__h;
+    column-gap: $gap__h__s;
     flex-flow: column;
 
     @media (min-width: $breakpoint-desktop__in) {
@@ -47,107 +45,27 @@ $gap__h__xl: $gap__h * 3.25;    // 65px
     }
 }
 
-.flexxer {
+@mixin flexxer($direction: h) {
     $self: &;
     display: flex;
     flex-flow: row;
     
-    &__h {
-        @extend .flexxer;
-    }
-    
-    &__v {
-        @extend .flexxer;
+    @if $direction == v {
         flex-flow: column;
+    } @else {
+        flex-flow: row;
     }
 }
 
-@for $i from 1 through 12 {
-    .gridder-span__#{$i} {
-        grid-column: auto / span $i ;
-    }
-    
-    .gridder-start__#{$i} {
-        grid-column-start: $i;
-    }
+@mixin gridder-span($cols) {
+    grid-column: auto / span $cols ;
 }
 
-/* ------------------ */
-/* --- TRANSITION --- */
-/* ------------------ */
-
-$t__base: 300ms;
-
-$t__faster: calc($t__base / 3.33);
-$t__fast:   calc($t__base / 2.5);
-$t__base:   $t__base;
-$t__slow:   $t__base * 1.75;
-$t__slower: $t__base * 3;
-
-/* --------------------- */
-/* --- COLOR PALETTE --- */
-/* --------------------- */
-
-$white: #ffffff;
-$black: #000000;
-$light: #ffffff;
-$dark: #272727;
-$blushred: #f07c79;
-$ochreyellow: #ffed65;
-$tealblue: #44e0dc;
-
-$primary: $blushred;
-$secondary: $ochreyellow;
-$tertiary: $tealblue;
-
-$colors: (
-    "white": $white,
-    "black": $black,
-    "light": $light,
-    "dark": $dark,
-    "primary": $primary,
-    "secondary": $secondary,
-    "tertiary": $tertiary,
-);
-
-$tones: (
-    "lightest": rgba(255, 255, 255, 100%),
-    "lighter": rgba(255, 255, 255, 78%),
-    // "base": rgba(255, 255, 255, 0%),
-    "darker": rgba(0, 0, 0, 78%),
-    "darkest": rgba(0, 0, 0, 100%)
-);
-
-@function tone($color,$tone){
-    @if map-has-key($colors, $color){
-        $color: map-get($colors, $color);
-
-        @if map-has-key($tones, $tone){
-            $tone: map-get($tones, $tone);
-            @return mix($color, $tone);
-        }
-        @return $color;
-    }
-    
-    @if map-has-key($tones, $tone){
-        $tone: map-get($tones, $tone);
-        @return mix(inherit, $tone);
-    }
-
-    @return null;
+@mixin gridder-start($col) {
+    grid-column-start: $col;
 }
 
-// :root {
-//     @each $color, $hex in $colors {
-//         @each $lightness, $tone, $percentage in $tones {
-//             --#{$color}-#{$lightness}: #{mix( $hex, $tone, $percentage)};
-//         }
-//     }
-// }
-
-/* ------------------ */
-/* --- TYPOGRAPHY --- */
-/* ------------------ */
+/* --------- TYPOGRAPHY --------- */
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&family=Roboto:wght@400;700&display=swap");
 
@@ -199,3 +117,86 @@ $f-size__xxl: $f-size__base * 3.75; // 60px
     font-weight: $f-weight__bold;
     font-size: $f-size__m;
 }
+
+
+/* ----------- COLORS ----------- */
+
+$white: #ffffff;
+$black: #000000;
+$light: #ffffff;
+$dark: #272727;
+$blushred: #f07c79;
+$ochreyellow: #ffed65;
+$tealblue: #44e0dc;
+
+$primary: $blushred;
+$secondary: $ochreyellow;
+$tertiary: $tealblue;
+
+$colors: (
+    "white": $white,
+    "black": $black,
+    "light": $light,
+    "dark": $dark,
+    "primary": $primary,
+    "secondary": $secondary,
+    "tertiary": $tertiary,
+);
+
+$tones: (
+    // "lightest": rgba(255, 255, 255, 100%),
+    // "lighter": rgba(255, 255, 255, 78%),
+    // // "base": rgba(255, 255, 255, 0%),
+    // "darker": rgba(0, 0, 0, 78%),
+    // "darkest": rgba(0, 0, 0, 100%),
+    
+    "lightest": rgb(255, 255, 255),
+    "lighter": rgb(100, 100, 100),
+    // "base": rgba(255, 255, 255, 0%),
+    "darker": rgb(78, 78, 78),
+    "darkest": rgb(0, 0, 0)
+);
+
+@function tone($color,$tone){
+    @if map-has-key($colors, $color){
+        $color: map-get($colors, $color);
+
+        @if map-has-key($tones, $tone){
+            $tone: map-get($tones, $tone);
+            @return mix($color, $tone);
+        }
+        @return $color;
+    }
+    
+    @if map-has-key($tones, $tone){
+        $tone: map-get($tones, $tone);
+        @return mix(inherit, $tone);
+    }
+    @return null;
+}
+
+// :root {
+//     @each $color, $hex in $colors {
+//         @each $lightness, $tone, $percentage in $tones {
+//             --#{$color}-#{$lightness}: #{mix( $hex, $tone, $percentage)};
+//         }
+//     }
+// }
+
+
+
+/* --------- TRANSITION --------- */
+
+// TIME 
+$t__base: 300ms;
+
+$t__faster: calc($t__base / 3.33);
+$t__fast:   calc($t__base / 2.5);
+$t__base:   $t__base;
+$t__slow:   $t__base * 1.75;
+$t__slower: $t__base * 3;
+
+// SPACE 
+$wave__light-dark:    url('@assets/graphics/wave__light-dark.svg');
+$wave__dark-light:    url('@assets/graphics/wave__dark-light.svg');
+$wave__light-primary: url('@assets/graphics/wave__light-primary.svg');
