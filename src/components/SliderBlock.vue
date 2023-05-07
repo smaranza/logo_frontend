@@ -1,0 +1,212 @@
+<template>
+    <Carousel 
+        :items-to-show="1"
+        :wrapAround="true"
+        :autoplay="3000" 
+        :pauseAutoplayOnHover="true"
+    >
+        <Slide v-for="slide in slides" :key="slide.id">
+            <div class="carousel__slide-inner">
+                <div class="carousel__slide-content">
+                    <h2 class="carousel__slide-title">{{ slide.title }}</h2>
+                    <p class="carousel__slide-desc">{{ slide.desc }}</p>
+                    <a class="carousel__slide-cta btn" :href="slide.cta.link">{{ slide.cta.text }}</a>
+                </div>
+            </div>
+            <div class="carousel__slide-bg">
+                <img class="carousel__slide-media"
+                    :src="getFullPath(slide.media)"
+                    :loading="slide.id == 0 ? '': 'lazy'"
+                />
+            </div>
+        </Slide>
+        <template #addons>
+            <div class="carousel__navigation">
+                <Navigation>
+                    <template #next>
+                        <BaseIcon :name="'chevron-right'" />
+                    </template>
+                    <template #prev>
+                        <BaseIcon :name="'chevron-left'" />
+                    </template>
+                </Navigation>
+            </div>
+            <Pagination />
+        </template>
+    </Carousel>
+</template>
+
+<script>
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import BaseIcon from '@components/base/BaseIcon.vue'
+import ImageHelper from "@helpers/image-helper.js";
+import 'vue3-carousel/dist/carousel.css'
+
+export default {
+    mixins: [ ImageHelper ],
+    components: { Carousel, Slide, Pagination, Navigation, BaseIcon },
+    data() {
+        return {
+            slides: [
+                { id: 0,
+                  title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 
+                  desc: 'sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.', 
+                  media: 'slider-1.png',
+                  cta: {
+                    text: "call to action",
+                    link: "#"
+                  }
+                },
+                { id: 1,
+                  title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 
+                  desc: 'sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.', 
+                  media: 'slider-2.jpg',
+                  cta: {
+                    text: "call to action",
+                    link: "#"
+                  }
+                },
+                { id: 2,
+                  title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 
+                  desc: 'sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.', 
+                  media: 'slider-3.jpg',
+                  cta: {
+                    text: "call to action",
+                    link: "#"
+                  }
+                },
+                { id: 3,
+                  title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 
+                  desc: 'sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.', 
+                  media: 'slider-4.jpg',
+                  cta: {
+                    text: "call to action",
+                    link: "#"
+                  }
+                },
+            ]
+        }
+    }
+}
+</script>
+
+<style lang="scss">
+.carousel {
+    .carousel__viewport {
+        background-color: $dark;
+        height: 100vh;
+
+        .carousel__track {
+            width: 100%;
+            height: 100%;
+
+            .carousel__slide {
+                .carousel__slide-inner {
+                    @include wrapper(full);
+                    @include gridder;
+                    
+                    .carousel__slide-content {
+                        @include gridder-span(5);
+                        @include gridder-start(2);
+                        @include flexxer(v);
+                        row-gap: $gap__v__l;
+                        text-align: left;
+
+                        .carousel__slide-desc {
+                            @include font-body();
+                        }
+
+                        .carousel__slide-cta {
+                            align-self: flex-start;
+                        }
+                    }
+                }
+
+                .carousel__slide-bg {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    
+                    &::before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        z-index: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba($dark, .2);
+                    }
+
+                    .carousel__slide-media {
+                        object-fit: cover;
+                        width: 100%;
+                    }
+                }
+
+                &:nth-child(even) {
+                    .carousel__slide-content {
+                        @include gridder-start(7);
+                        text-align: right;
+
+                        .carousel__slide-cta {
+                            align-self: flex-end;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .carousel__navigation {
+        .carousel__prev,
+        .carousel__next {
+            color: $light;
+            margin: 4%;
+        }
+    }
+
+
+    .carousel__pagination {
+        position: absolute;
+        top: calc($gap__v__s * 10);
+        left: 0;
+        flex-flow: column;
+        counter-reset: slide-index;
+
+        &-button {
+            width: calc( $gap__h__s * 3 );
+            height: calc( $gap__h__s * 3 );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition-property: color, opacity, background-color;
+            transition-duration: $t__slower; 
+            transition-timing-function: ease;
+            color: $light;
+            background-color: $primary;
+            opacity: .3;
+
+            &:hover {
+                background-color: tone(primary, darker);
+            }
+    
+            &--active {
+                opacity: 1;
+            }
+
+            &::after {
+                counter-increment: slide-index;
+                content: counter( slide-index );
+                background: none;
+                position: relative;
+                height: max-content;
+                @include font-cta;
+                font-family: $f-family__mono;
+            }
+        }
+    }
+}
+</style>

@@ -14,7 +14,8 @@ import BaseNav from '@components/base/BaseNav.vue'
 
 <style lang="scss">
     header {
-        position: sticky;
+        position: fixed;
+        width: 100%;
         top: 0;
         z-index: 5000;
         background-color: rgba($dark, .80);

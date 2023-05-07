@@ -53,7 +53,7 @@ a, button {
 }
 
 button {
-    text-transform: uppercase;
+    @include font-cta;
 }
 
 li {
@@ -84,6 +84,14 @@ li {
     }
 }
 
+.wrapper {
+    &__full {
+        @include wrapper(full);
+    }
+
+    @include wrapper(boxed);
+}
+
 .flexxer {
     &__h {
         @include flexxer(h);
@@ -96,20 +104,10 @@ li {
     @include flexxer(h);
 }
 
-.wrapper {
-    &__full {
-        @include wrapper(full);
-    }
-
-    @include wrapper(boxed);
-}
-
 .gridder {
     @include gridder;
 }
 
-
-
-.flexxer {
-    @include flexxer;
+.btn {
+    @include btn;
 }

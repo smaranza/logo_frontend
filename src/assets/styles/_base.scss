@@ -85,7 +85,7 @@ $f-size__l:   $f-size__base * 1.5; // 24px
 $f-size__xl:  $f-size__base * 2.125; // 34px
 $f-size__xxl: $f-size__base * 3.75; // 60px
 
-// Typography reference: 
+// @demo reference: 
 // body: $f-family__sans $f-weight__regular $f-size__s
 // headline: $f-family__mono $f-weight__bold $f-size__l
 // display: $f-family__mono $f-weight__bold $f-size__xxl
@@ -144,15 +144,8 @@ $colors: (
 );
 
 $tones: (
-    // "lightest": rgba(255, 255, 255, 100%),
-    // "lighter": rgba(255, 255, 255, 78%),
-    // // "base": rgba(255, 255, 255, 0%),
-    // "darker": rgba(0, 0, 0, 78%),
-    // "darkest": rgba(0, 0, 0, 100%),
-    
     "lightest": rgb(255, 255, 255),
     "lighter": rgb(100, 100, 100),
-    // "base": rgba(255, 255, 255, 0%),
     "darker": rgb(78, 78, 78),
     "darkest": rgb(0, 0, 0)
 );
@@ -167,14 +160,10 @@ $tones: (
         }
         @return $color;
     }
-    
-    @if map-has-key($tones, $tone){
-        $tone: map-get($tones, $tone);
-        @return mix(inherit, $tone);
-    }
     @return null;
 }
 
+// @demo
 // :root {
 //     @each $color, $hex in $colors {
 //         @each $lightness, $tone, $percentage in $tones {
@@ -183,7 +172,35 @@ $tones: (
 //     }
 // }
 
+/* ----------- BUTTONS ---------- */
 
+@mixin btn($color: $primary, $width: auto) {
+    @include font-cta;
+    text-transform: uppercase;
+    display: inline-block;
+    width: auto;
+    padding: 20px;
+    background: $color;
+    color: $light;
+    border-radius: $gap__v__m;
+    border: none;
+    transition: background-color $t__fast;
+
+    &:visited {
+        color: $light;
+    }
+
+    &:hover {
+        background: mix($color, map-get($tones, darker));
+    }
+
+    @if $width == full {
+        width: 100%;
+    }
+}
+
+// @demo
+// @mixin btn-outline() { ... }
 
 /* --------- TRANSITION --------- */
 
