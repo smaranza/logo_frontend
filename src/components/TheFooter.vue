@@ -64,7 +64,7 @@ export default {
 
 <style lang="scss">
     footer {
-        padding: $gap__v__xl 0;
+        padding: $gap__v-xl 0;
         position: relative;
         background-color: $dark;
 
@@ -84,7 +84,7 @@ export default {
         .footer-inner {
 
             .footer-content__top {
-                padding: $gap__v__l 0;
+                padding: $gap__v-l 0;
             }
     
             .footer-content__bottom {
@@ -94,7 +94,7 @@ export default {
     
                 .footer-column {
                     .legal-list {
-                        margin-bottom: $gap__h__m;
+                        margin-bottom: $gap__h-m;
     
                         .legal-entry {
                             .legal-link {
@@ -109,7 +109,7 @@ export default {
     
                         .social-claim {
                             text-transform: uppercase;
-                            margin-bottom: $gap__v__m;
+                            margin-bottom: $gap__v-m;
                         }
                     }
                 }

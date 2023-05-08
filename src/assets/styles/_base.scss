@@ -5,20 +5,20 @@ $breakpoint-mobile__in: $breakpoint-mobile__ex + 1px;
 $breakpoint-desktop__in: 1080px;
 $breakpoint-desktop__ex: $breakpoint-desktop__in - 1px;
 
-$gap__v: 16px;
-$gap__h: 20px;
+$gap__v: 1rem;
+$gap__h: 1.25rem;
 
-$gap__v__xs: calc($gap__v / 2); // 8px
-$gap__v__s:  $gap__v;           // 16px
-$gap__v__m:  $gap__v * 1.25;    // 20px
-$gap__v__l:  $gap__v * 2;       // 32px
-$gap__v__xl: $gap__v * 3.125;   // 50px
+$gap__v-xs: calc($gap__v / 2); // 8px
+$gap__v-s:  $gap__v;           // 16px
+$gap__v-m:  $gap__v * 1.25;    // 20px
+$gap__v-l:  $gap__v * 2;       // 32px
+$gap__v-xl: $gap__v * 3.125;   // 50px
 
-$gap__h__xs: calc($gap__h / 2); // 10px
-$gap__h__s:  $gap__h;           // 20px
-$gap__h__m:  $gap__h * 1.25;    // 25px
-$gap__h__l:  $gap__h * 2;       // 40px
-$gap__h__xl: $gap__h * 3.25;    // 65px
+$gap__h-xs: calc($gap__h / 2); // 10px
+$gap__h-s:  $gap__h;           // 20px
+$gap__h-m:  $gap__h * 1.25;    // 25px
+$gap__h-l:  $gap__h * 2;       // 40px
+$gap__h-xl: $gap__h * 3.25;    // 65px
 
 @mixin wrapper($mode: boxed) {
     display: block;
@@ -36,7 +36,7 @@ $gap__h__xl: $gap__h * 3.25;    // 65px
 
 @mixin gridder {
     display: flex;
-    column-gap: $gap__h__s;
+    column-gap: $gap__h-s;
     flex-flow: column;
 
     @media (min-width: $breakpoint-desktop__in) {
@@ -182,7 +182,7 @@ $tones: (
     padding: 20px;
     background: $color;
     color: $light;
-    border-radius: $gap__v__m;
+    border-radius: $gap__v-m;
     border: none;
     transition: background-color $t__fast;
 

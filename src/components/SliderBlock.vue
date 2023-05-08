@@ -2,7 +2,7 @@
     <Carousel 
         :items-to-show="1"
         :wrapAround="true"
-        :autoplay="3000" 
+        :autoplay="5000" 
         :pauseAutoplayOnHover="true"
     >
         <Slide v-for="slide in slides" :key="slide.id">
@@ -109,7 +109,7 @@ export default {
                         @include gridder-span(5);
                         @include gridder-start(2);
                         @include flexxer(v);
-                        row-gap: $gap__v__l;
+                        row-gap: $gap__v-l;
                         text-align: left;
 
                         .carousel__slide-desc {
@@ -143,6 +143,7 @@ export default {
                     .carousel__slide-media {
                         object-fit: cover;
                         width: 100%;
+                        height: 100%;
                     }
                 }
 
@@ -161,29 +162,53 @@ export default {
     }
 
     .carousel__navigation {
+        display: none;
+
+        @media (min-width: $breakpoint-desktop__in) {
+            display: block;
+        }
+
         .carousel__prev,
         .carousel__next {
             color: $light;
             margin: 4%;
+            
+            i {
+                position: relative;
+                left: $gap__h-m;
+            }
+        }
+
+        .carousel__next {
+            i {
+                left: 0;
+                right: $gap__h-m;
+            }
         }
     }
 
-
     .carousel__pagination {
         position: absolute;
-        top: calc($gap__v__s * 10);
+        bottom: 0;
+        flex-flow: row;
         left: 0;
-        flex-flow: column;
         counter-reset: slide-index;
+        margin: 0;
+        
+        @media (min-width: $breakpoint-desktop__in) {
+            flex-flow: column;
+            top: calc($gap__v-s * 10);
+            bottom: unset;
+        }
 
         &-button {
-            width: calc( $gap__h__s * 3 );
-            height: calc( $gap__h__s * 3 );
+            width: calc( $gap__h-s * 3 );
+            height: calc( $gap__h-s * 3 );
             display: flex;
             align-items: center;
             justify-content: center;
             transition-property: color, opacity, background-color;
-            transition-duration: $t__slower; 
+            transition-duration: $t__slow; 
             transition-timing-function: ease;
             color: $light;
             background-color: $primary;
