@@ -13,13 +13,20 @@
     <article id="tabs">
         <div class="article-inner">
             <h2 class="article-display">Lorem ipsum dolor sit amet consectetuer?</h2>
-            <TabsBlock></TabsBlock>
+            <TabsBlock
+                :max-item="3"
+            />
         </div>
     </article>
 </template>
 
 <script>
-
+import NewsBlock from '@components/NewsBlock.vue'
+import TimelineBlock from '@components/TimelineBlock.vue'
+import TabsBlock from '@components/TabsBlock.vue'
+export default {
+    components: { NewsBlock, TimelineBlock, TabsBlock }
+}
 </script>
 
 <style lang="scss">
@@ -78,6 +85,10 @@ article {
             position: relative;
             z-index: 30;
         }
+    }
+
+    &#tabs {
+        padding-top: $gap__v-xl * 6;
     }
 }
 </style>

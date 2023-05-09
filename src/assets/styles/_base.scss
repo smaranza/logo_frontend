@@ -36,7 +36,7 @@ $gap__h-xl: $gap__h * 3.25;    // 65px
 
 @mixin gridder {
     display: flex;
-    column-gap: $gap__h-s;
+    gap: $gap__h-s;
     flex-flow: column;
 
     @media (min-width: $breakpoint-desktop__in) {
@@ -147,7 +147,9 @@ $tones: (
     "lightest": rgb(255, 255, 255),
     "lighter": rgb(100, 100, 100),
     "darker": rgb(78, 78, 78),
-    "darkest": rgb(0, 0, 0)
+    "darkest": rgb(0, 0, 0),
+    "screen": rgba(255, 255, 255, 0.25),
+    "overlay": rgba(0, 0, 0, 0.25)
 );
 
 @function tone($color,$tone){
@@ -160,7 +162,7 @@ $tones: (
         }
         @return $color;
     }
-    @return null;
+    @return mix($color, map-get($tones, $tone));
 }
 
 // @demo
@@ -179,12 +181,12 @@ $tones: (
     text-transform: uppercase;
     display: inline-block;
     width: auto;
-    padding: 20px;
+    padding: $gap__h-s;
     background: $color;
     color: $light;
     border-radius: $gap__v-m;
     border: none;
-    transition: background-color $t__fast;
+    transition: background-color $t__base;
 
     &:visited {
         color: $light;
@@ -196,6 +198,8 @@ $tones: (
 
     @if $width == full {
         width: 100%;
+        align-self: stretch;
+        text-align: center;
     }
 }
 
