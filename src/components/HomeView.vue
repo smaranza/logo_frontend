@@ -34,9 +34,25 @@ article {
     color: $dark;
     position: relative;
 
+    .article-inner {
+        @include wrapper;
+        @include gridder;
+        position: relative;
+        
+        .article-display {
+            @include g__span(8);
+            position: relative;
+            z-index: 30;
+            color: $primary;
+
+            & + * {
+                @include g__span(12);
+            }
+        }
+    }
+
     &:nth-child(even) {
         background-color: $dark;
-        color: $light;
         opacity: 1;
         overflow-y: visible;
         background: linear-gradient(180deg, $dark 0%, tone(dark, lighter) 100%);
@@ -47,7 +63,7 @@ article {
             display: block;
             width: 100vw;
             // min-height: 556px;
-            position: relative;
+            position: absolute;
             background-size: cover;
             background-repeat: no-repeat;
             aspect-ratio: 2.6 / 1 ;
@@ -60,37 +76,36 @@ article {
         }
         
         &::after {
-            transform: translateY(calc(100% - 2px));
+            top: calc(100% - 2px);
             background-image: $wave__dark-light;
             z-index: 10;
         }
-    }
 
-    &:nth-child(odd) {
         .article-inner {
             .article-display {
-                color: $primary;
-            }
-        }
-    }
+                position: absolute;
+                top: 0;
+                right: 0;
+                max-width: calc(92vw / 12 * 8 - $gap__h-s);
+                padding: 192px 0 180px;
+                text-align: right;
+                transform: translateY(calc(-100% + 2px));
 
-    .article-inner {
-        @include wrapper;
-        @include gridder;
-        
-        .article-display {
-            @include g__span(8);
-            position: relative;
-            z-index: 30;
-
-            & + * {
-                @include g__span(12);
+                & + * {
+                    color: $light;
+                }
             }
         }
     }
 
     &#tabs {
         padding-top: $gap__v-xl * 6;
+    }
+
+    &#timeline {
+        .article-display {
+            // margin-bottom: $gap__v-xl * 6;
+        }
     }
 }
 </style>

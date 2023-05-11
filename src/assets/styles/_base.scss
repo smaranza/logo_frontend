@@ -34,14 +34,14 @@ $gap__h-xl: $gap__h * 3.25;    // 65px
     }
 }
 
-@mixin gridder {
+@mixin gridder($columns: 12) {
     display: flex;
     gap: $gap__h-s;
     flex-flow: column;
 
     @media (min-width: $breakpoint-desktop__in) {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat($columns, 1fr);
     }
 }
 
@@ -216,6 +216,8 @@ $t__fast:   calc($t__base / 2.5);
 $t__base:   $t__base;
 $t__slow:   $t__base * 1.75;
 $t__slower: $t__base * 3;
+
+$t__bounce: cubic-bezier(.29,1.52,.65,.84);
 
 // SPACE 
 $wave__light-dark:    url('@assets/graphics/wave__light-dark.svg');
