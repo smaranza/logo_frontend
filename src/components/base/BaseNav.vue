@@ -9,15 +9,12 @@
 </template>
 
 <script>
+import Data from "@helpers/data-helper.json"
+
 export default {
     data() {
         return {
-            menu: [
-                { 'target': '#target', name: 'Slider' },
-                { 'target': '#target', name: 'News' },
-                { 'target': '#target', name: 'Percorso' },
-                { 'target': '#target', name: 'Tab' },
-            ]
+            menu: Data.navigation
         }
     },
     methods: {

@@ -63,12 +63,12 @@ li {
 /* --------- CUSTOMS --------- */
 
 @for $i from 1 through 12 {
-    .gridder-span__#{$i} {
-        @include gridder-span(#{$i});
+    .g__span-#{$i} {
+        @include g__span(#{$i});
     }
     
-    .gridder-start__#{$i} {
-        @include gridder-start(#{$i});
+    .g__start-#{$i} {
+        @include g__start(#{$i});
     }
 }
 

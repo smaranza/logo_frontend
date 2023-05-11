@@ -57,11 +57,11 @@ $gap__h-xl: $gap__h * 3.25;    // 65px
     }
 }
 
-@mixin gridder-span($cols) {
-    grid-column: auto / span $cols ;
+@mixin g__span($cols) {
+    grid-column-end: span $cols ;
 }
 
-@mixin gridder-start($col) {
+@mixin g__start($col) {
     grid-column-start: $col;
 }
 

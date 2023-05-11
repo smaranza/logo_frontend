@@ -1,0 +1,143 @@
+{
+    "navigation": [
+        {
+            "target": "#target",
+            "name": "Slider"
+        },
+        {
+            "target": "#target",
+            "name": "News"
+        },
+        {
+            "target": "#target",
+            "name": "Percorso"
+        },
+        {
+            "target": "#target",
+            "name": "Tab"
+        }
+    ],
+    "socials": [
+        {
+            "id": 0,
+            "name": "facebook",
+            "url": "#"
+        },
+        {
+            "id": 1,
+            "name": "twitter",
+            "url": "#"
+        },
+        {
+            "id": 2,
+            "name": "instagram",
+            "url": "#"
+        },
+        {
+            "id": 3,
+            "name": "linkedin",
+            "url": "#"
+        },
+        {
+            "id": 4,
+            "name": "youtube",
+            "url": "#"
+        }
+    ],
+    "legals": [
+        {
+            "id": 0,
+            "name": "Term & Conditions",
+            "url": "#"
+        },
+        {
+            "id": 1,
+            "name": "Privacy Policy",
+            "url": "#"
+        },
+        {
+            "id": 2,
+            "name": "Cookies Policy",
+            "url": "#"
+        },
+        {
+            "id": 3,
+            "name": "Copyrights Notification",
+            "url": "#"
+        }
+    ],
+    "tabs": [
+        {
+            "title": "Tab Rosa",
+            "media": "sveglia.png",
+            "text": "Erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci  magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.",
+            "cta": "Call to Action"
+        },
+        {
+            "title": "Tab Gialla",
+            "media": "target.png",
+            "text": "Erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci  magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.",
+            "cta": "Call to Action"
+        },
+        {
+            "title": "Tab Turchese",
+            "media": "razzo.png",
+            "text": "Erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci  magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.",
+            "cta": "Call to Action"
+        },
+        {
+            "title": "Tab Rosa",
+            "media": "sveglia.png",
+            "text": "Erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci  magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.",
+            "cta": "Call to Action"
+        },
+        {
+            "title": "Tab Rosa",
+            "media": "sveglia.png",
+            "text": "Erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci  magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.",
+            "cta": "Call to Action"
+        }
+    ],
+    "slides": [
+        {
+            "id": 0,
+            "title": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
+            "desc": "sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.",
+            "media": "slider-1.png",
+            "cta": {
+                "text": "call to action",
+                "url": "#"
+            }
+        },
+        {
+            "id": 1,
+            "title": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
+            "desc": "sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.",
+            "media": "slider-2.jpg",
+            "cta": {
+                "text": "call to action",
+                "url": "#"
+            }
+        },
+        {
+            "id": 2,
+            "title": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
+            "desc": "sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.",
+            "media": "slider-3.jpg",
+            "cta": {
+                "text": "call to action",
+                "url": "#"
+            }
+        },
+        {
+            "id": 3,
+            "title": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
+            "desc": "sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.",
+            "media": "slider-4.jpg",
+            "cta": {
+                "text": "call to action",
+                "url": "#"
+            }
+        }
+    ]
+}

@@ -5,10 +5,10 @@
                 <BaseLogo></BaseLogo>
             </div>
             <div class="footer-content__bottom gridder">
-                <div class="footer-column gridder-span__8">
+                <div class="footer-column g__span-8">
                     <ul class="block-list legal-list">
                         <li v-for="(legal, i) in legalList" :key="i" class="list-entry legal-entry">
-                            <a :href="legal.link" class="list-link legal-link is-small">
+                            <a :href="legal.url" class="list-link legal-link is-small">
                                 {{ legal.name }}
                             </a>
                             <span v-if="i < legalList.length-1" >|</span>
@@ -18,12 +18,12 @@
                         <span id="copyright">Copyright © {{ new Date().getFullYear() }} Logotel. All rights reserved.</span>
                     </div>
                 </div>
-                <div class="footer-column gridder-span__4">
+                <div class="footer-column g__span-4">
                     <div class="social-container">
                         <p class="social-claim">Seguici sui social:</p>
                         <ul class="block-list social-list">
                             <li v-for="(social, i) in socialList" :key="i" class="list-entry social-entry">
-                                <a :href="social.link" class="list-link social-link">
+                                <a :href="social.url" class="list-link social-link">
                                     <BaseIcon :name="social.name" color="white"></BaseIcon>
                                     <!-- {{ social.name }} -->
                                 </a>
@@ -39,24 +39,15 @@
 <script>
 import BaseLogo from '@components/base/BaseLogo.vue'
 import BaseIcon from '@components/base/BaseIcon.vue'
+import Data from "@helpers/data-helper.json";
 
 export default {
+    mixins: [ Data ],
     components: { BaseLogo, BaseIcon },
     data() {
         return {
-            socialList: [
-                { id: 0, name: "facebook", link: "#" },
-                { id: 1, name: "twitter", link: "#" },
-                { id: 2, name: "instagram", link: "#" },
-                { id: 3, name: "linkedin", link: "#" },
-                { id: 4, name: "youtube", link: "#" },
-            ],
-            legalList: [
-                { id: 0, name: "Term & Conditions", link: "#" },
-                { id: 1, name: "Privacy Policy", link: "#" },
-                { id: 2, name: "Cookies Policy", link: "#" },
-                { id: 3, name: "Copyrights Notification", link: "#" },
-            ]
+            socialList: Data.socials,
+            legalList: Data.legals
         }
     }
 }

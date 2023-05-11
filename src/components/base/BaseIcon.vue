@@ -1,5 +1,5 @@
 <template>
-    <i :class="`icon--${name}`" :style="`color: ${this.color}`">
+    <i :class="iconCls" :style="iconStyle">
         <component :is="iconSrc"></component>
     </i>
 </template>
@@ -14,7 +14,9 @@ export default {
     },
     data(){
         return {
-            iconSrc: defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/graphics/icons/${this.name}.svg`))
+            iconSrc: defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/graphics/icons/${this.name}.svg`)),
+            iconCls: `icon--${this.name}`,
+            iconStyle: `color: ${this.color};`
         }
     } 
 }

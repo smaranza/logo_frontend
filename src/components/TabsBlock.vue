@@ -1,11 +1,11 @@
 <template>
-    <div class="tab-container gridder gridder-span__12">
+    <div class="tab-container gridder g__span-12">
         <template v-for="(tab, i) in tabs" :key="i">
             <BaseTab 
                 v-if="i < maxItem"
                 url="#"
                 :color="getColorByIndex(i)"
-                class="tab-item gridder-span__4"
+                class="tab-item g__span-4"
             >
                 <template #title>{{ tab.title }}</template>
                 <template #media>
@@ -21,46 +21,19 @@
 <script>
 import BaseTab from '@components/base/BaseTab.vue';
 import ImageHelper from "@helpers/image-helper.js";
+import Data from "@helpers/data-helper.json";
 
 const colorMap = [ "primary", "secondary", "tertiary" ];
-const tabData = [ 
-    { 
-        title: "Tab Rosa",
-        media: "sveglia.png",
-        text: "Erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci  magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.",
-        cta: "Call to Action"
-    }, {
-        title: "Tab Rosa",
-        media: "target.png",
-        text: "Erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci  magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.",
-        cta: "Call to Action"
-    }, {
-        title: "Tab Rosa",
-        media: "razzo.png",
-        text: "Erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci  magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.",
-        cta: "Call to Action"
-    }, {
-        title: "Tab Rosa",
-        media: "sveglia.png",
-        text: "Erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci  magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.",
-        cta: "Call to Action"
-    }, {
-        title: "Tab Rosa",
-        media: "sveglia.png",
-        text: "Erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci  magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci.",
-        cta: "Call to Action"
-    }
-]
 
 export default {
-    mixins: [ ImageHelper ],
+    mixins: [ ImageHelper, Data ],
     components: { BaseTab },
     props: {
         maxItem: Number //@demo
     },
     data() {
         return {
-            tabs: tabData
+            tabs: Data.tabs
         }
     },
     methods: {

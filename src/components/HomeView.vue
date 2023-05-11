@@ -7,15 +7,13 @@
     <article id="timeline">
         <div class="article-inner">
             <h2 class="article-display">Sed diam nonummy nibh euismod tincidunt?</h2>
-            <TimelineBlock></TimelineBlock>
+            <TimelineBlock :max-steps="6"></TimelineBlock>
         </div>
     </article>
     <article id="tabs">
         <div class="article-inner">
             <h2 class="article-display">Lorem ipsum dolor sit amet consectetuer?</h2>
-            <TabsBlock
-                :max-item="3"
-            />
+            <TabsBlock :max-item="3" />
         </div>
     </article>
 </template>
@@ -81,9 +79,13 @@ article {
         @include gridder;
         
         .article-display {
-            @include gridder-span(8);
+            @include g__span(8);
             position: relative;
             z-index: 30;
+
+            & + * {
+                @include g__span(12);
+            }
         }
     }
 

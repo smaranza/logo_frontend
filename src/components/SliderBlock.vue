@@ -10,7 +10,7 @@
                 <div class="carousel__slide-content">
                     <h2 class="carousel__slide-title">{{ slide.title }}</h2>
                     <p class="carousel__slide-desc">{{ slide.desc }}</p>
-                    <a class="carousel__slide-cta btn" :href="slide.cta.link">{{ slide.cta.text }}</a>
+                    <a class="carousel__slide-cta btn" :href="slide.cta.url">{{ slide.cta.text }}</a>
                 </div>
             </div>
             <div class="carousel__slide-bg">
@@ -40,51 +40,15 @@
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import BaseIcon from '@components/base/BaseIcon.vue'
 import ImageHelper from "@helpers/image-helper.js";
+import Data from "@helpers/data-helper.json";
 import 'vue3-carousel/dist/carousel.css'
 
 export default {
-    mixins: [ ImageHelper ],
+    mixins: [ ImageHelper, Data ],
     components: { Carousel, Slide, Pagination, Navigation, BaseIcon },
     data() {
         return {
-            slides: [
-                { id: 0,
-                  title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 
-                  desc: 'sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.', 
-                  media: 'slider-1.png',
-                  cta: {
-                    text: "call to action",
-                    link: "#"
-                  }
-                },
-                { id: 1,
-                  title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 
-                  desc: 'sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.', 
-                  media: 'slider-2.jpg',
-                  cta: {
-                    text: "call to action",
-                    link: "#"
-                  }
-                },
-                { id: 2,
-                  title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 
-                  desc: 'sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.', 
-                  media: 'slider-3.jpg',
-                  cta: {
-                    text: "call to action",
-                    link: "#"
-                  }
-                },
-                { id: 3,
-                  title: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit', 
-                  desc: 'sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.', 
-                  media: 'slider-4.jpg',
-                  cta: {
-                    text: "call to action",
-                    link: "#"
-                  }
-                },
-            ]
+            slides: Data.slides
         }
     }
 }
@@ -106,8 +70,8 @@ export default {
                     @include gridder;
                     
                     .carousel__slide-content {
-                        @include gridder-span(5);
-                        @include gridder-start(2);
+                        @include g__span(5);
+                        @include g__start(2);
                         @include flexxer(v);
                         row-gap: $gap__v-l;
                         text-align: left;
@@ -149,7 +113,7 @@ export default {
 
                 &:nth-child(even) {
                     .carousel__slide-content {
-                        @include gridder-start(7);
+                        @include g__start(7);
                         text-align: right;
 
                         .carousel__slide-cta {
