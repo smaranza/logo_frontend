@@ -199,7 +199,7 @@ $stepColors: (
                 @include g__start(2);
                 @include g__span(4);
                 grid-row-start: 2;
-                margin-bottom: $gap__h-xl;
+                margin-bottom: 0;
 
                 h3 {
                     @include font-headline;
@@ -236,6 +236,10 @@ $stepColors: (
             &.is__open {
                 .step__header .step__icon::after {
                     width: calc(100% + $gap__h-l);
+                }
+
+                .step__content {
+                    margin-bottom: $gap__h-xl;
                 }
             }
         }

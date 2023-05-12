@@ -60,10 +60,9 @@ export default {
         background-color: $dark;
 
         &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            width: 100%;
+            @include pseudo;
+            top: unset;
+            height: unset;
             bottom: calc(100% - 2px);
             // min-height: 537px;
             background-image: $wave__light-primary;

@@ -62,8 +62,8 @@ export default Accordion
         opacity: 0;
         max-height: 0;
         height: 100%;
-        transition: $t__base ease-in-out;
-        transition-property: max-height, opacity;
+        transition: $t__slow ease-in-out;
+        transition-property: max-height, opacity, margin-bottom;
         overflow: hidden;
     }
 

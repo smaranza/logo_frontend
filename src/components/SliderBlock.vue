@@ -95,12 +95,8 @@ export default {
                     z-index: -1;
                     
                     &::before {
-                        content: '';
-                        display: block;
-                        position: absolute;
+                        @include pseudo;
                         z-index: 0;
-                        width: 100%;
-                        height: 100%;
                         background-color: rgba($dark, .2);
                     }
 

@@ -67,15 +67,11 @@ export default {
         margin: $gap__v-l;
         
         &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 100%;
+            @include pseudo;
             aspect-ratio: 1 / 1;
             background-color: $accent;
             z-index: 0;
             border-radius: 50%;
-            top: 0;
         }
 
         img {

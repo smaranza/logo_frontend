@@ -1,45 +1,46 @@
 <template>
-    <article id="news">
-        <div class="article-inner">
-            <NewsBlock></NewsBlock>
+    <section id="news" class="home-section">
+        <div class="section-inner">
+            <NewsBlock :max-item="3"></NewsBlock>
         </div>
-    </article>
-    <article id="timeline">
-        <div class="article-inner">
-            <h2 class="article-display">Sed diam nonummy nibh euismod tincidunt?</h2>
+    </section>
+    <section id="timeline" class="home-section">
+        <div class="section-inner">
+            <h2 class="section-display">Sed diam nonummy nibh euismod tincidunt?</h2>
             <TimelineBlock :max-steps="6"></TimelineBlock>
         </div>
-    </article>
-    <article id="tabs">
-        <div class="article-inner">
-            <h2 class="article-display">Lorem ipsum dolor sit amet consectetuer?</h2>
+    </section>
+    <section id="tabs" class="home-section">
+        <div class="section-inner">
+            <h2 class="section-display">Lorem ipsum dolor sit amet consectetuer?</h2>
             <TabsBlock :max-item="3" />
         </div>
-    </article>
+    </section>
 </template>
 
 <script>
 import NewsBlock from '@components/NewsBlock.vue'
 import TimelineBlock from '@components/TimelineBlock.vue'
 import TabsBlock from '@components/TabsBlock.vue'
+
 export default {
     components: { NewsBlock, TimelineBlock, TabsBlock }
 }
 </script>
 
 <style lang="scss">
-article {
+.home-section {
     min-height: 100vh;
     background-color: $light;
     color: $dark;
     position: relative;
 
-    .article-inner {
+    .section-inner {
         @include wrapper;
         @include gridder;
         position: relative;
         
-        .article-display {
+        .section-display {
             @include g__span(8);
             position: relative;
             z-index: 30;
@@ -59,18 +60,15 @@ article {
         
         &::before, 
         &::after {
-            content: '';
-            display: block;
+            @include pseudo;
             width: 100vw;
             // min-height: 556px;
-            position: absolute;
             background-size: cover;
             background-repeat: no-repeat;
             aspect-ratio: 2.6 / 1 ;
         }
         
         &::before {
-            top: 0;
             transform: translateY(calc(-100% + 2px));
             background-image: $wave__light-dark;
         }
@@ -81,8 +79,8 @@ article {
             z-index: 10;
         }
 
-        .article-inner {
-            .article-display {
+        .section-inner {
+            .section-display {
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -98,14 +96,12 @@ article {
         }
     }
 
-    &#tabs {
-        padding-top: $gap__v-xl * 6;
+    &#news {
+        margin-bottom: $gap__v-xl * 8;
     }
 
-    &#timeline {
-        .article-display {
-            // margin-bottom: $gap__v-xl * 6;
-        }
+    &#tabs {
+        padding-top: $gap__v-xl * 6;
     }
 }
 </style>

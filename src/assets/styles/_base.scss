@@ -223,3 +223,16 @@ $t__bounce: cubic-bezier(.29,1.52,.65,.84);
 $wave__light-dark:    url('@assets/graphics/wave__light-dark.svg');
 $wave__dark-light:    url('@assets/graphics/wave__dark-light.svg');
 $wave__light-primary: url('@assets/graphics/wave__light-primary.svg');
+
+/* --------- PSEUDO --------- */
+
+@mixin pseudo($position: absolute) {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: $position;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}

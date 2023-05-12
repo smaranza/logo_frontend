@@ -139,5 +139,35 @@
                 "url": "#"
             }
         }
+    ],
+    "news": [
+        {
+            "id": 0,
+            "date": "22.11.2023",
+            "title": "Lorem ipsum dolor sit amet, consectetuer",
+            "banner": "news-1.png",
+            "text": "Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupidi aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+            "id": 1,
+            "date": "22.11.2023",
+            "title": "Lorem ipsum dolor sit amet, consectetuer",
+            "banner": "news-2.png",
+            "text": "Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupidi aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+            "id": 2,
+            "date": "22.11.2023",
+            "title": "Lorem ipsum dolor sit amet, consectetuer",
+            "banner": "news-3.png",
+            "text": "Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupidi aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+            "id": 3,
+            "date": "22.11.2023",
+            "title": "Lorem ipsum dolor sit amet, consectetuer",
+            "banner": "news-1.png",
+            "text": "Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupidi aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }
     ]
 }
