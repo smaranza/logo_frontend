@@ -4,6 +4,8 @@ $breakpoint-mobile__ex: 960px;
 $breakpoint-mobile__in: $breakpoint-mobile__ex + 1px;
 $breakpoint-desktop__in: 1080px;
 $breakpoint-desktop__ex: $breakpoint-desktop__in - 1px;
+$breakpoint-2k__in: 2560px;
+$breakpoint-2k__ex: $breakpoint-2k__in - 1px;
 
 $gap__v: 1rem;
 $gap__h: 1.25rem;
@@ -144,7 +146,7 @@ $colors: (
 );
 
 $tones: (
-    "lightest": rgb(255, 255, 255),
+    "lightest": rgb(200, 200, 200),
     "lighter": rgb(100, 100, 100),
     "darker": rgb(78, 78, 78),
     "darkest": rgb(0, 0, 0),
@@ -185,15 +187,24 @@ $tones: (
     background: $color;
     color: $light;
     border-radius: $gap__v-m;
-    border: none;
-    transition: background-color $t__base;
+    transition: background-color $t__fast;
+    border: 2px solid transparent;
 
     &:visited {
         color: $light;
     }
 
     &:hover {
-        background: mix($color, map-get($tones, darker));
+        background: tone($color, lightest);
+        
+        @if ($color == $secondary) { 
+            color: $dark;
+            border-color: $dark;
+        }
+        @else {
+            color: $light;
+            border-color: $light;
+        }
     }
 
     @if $width == full {
@@ -202,9 +213,6 @@ $tones: (
         text-align: center;
     }
 }
-
-// @demo
-// @mixin btn-outline() { ... }
 
 /* --------- TRANSITION --------- */
 

@@ -1,8 +1,8 @@
 <template>
     <nav>
-        <ul class="nav--list">
-            <li v-for="item in menu" class="nav--item">
-                <a class="nav--link" @click="scrollToTarget(item.target)">{{ item.name }}</a>
+        <ul class="nav__list">
+            <li v-for="item in menu" class="nav__item">
+                <a class="nav__link is__text-link" @click="scrollToTarget(item.target)">{{ item.name }}</a>
             </li>
         </ul>
     </nav>
@@ -30,10 +30,10 @@ export default {
     nav {
         margin-right: $gap__h-xl;
         
-        .nav--list {
+        .nav__list {
             @include flexxer(h);
 
-            .nav--item {
+            .nav__item {
                 margin: 0 $gap__h-m;
                 font-family: $f-family__mono;
                 font-weight: $f-weight__medium;

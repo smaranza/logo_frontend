@@ -52,6 +52,22 @@ a, button {
     }
 }
 
+a.is__text-link {
+    position: relative;
+
+    &::before {
+        @include pseudo;
+        width: 0;
+        z-index: 15;
+        border-bottom: 2px solid $light;
+        transition: width $t__faster ease-out;
+    }
+
+    &:hover::before {
+        width: 100%;
+    }
+}
+
 button {
     @include font-cta;
 }
@@ -69,18 +85,6 @@ li {
     
     .g__start-#{$i} {
         @include g__start(#{$i});
-    }
-}
-
-.block-list {
-    @include flexxer;
-
-    .list-entry {
-        margin-right: calc($gap__v / 2);
-
-        .list-link {
-            margin-right: calc($gap__v / 2);
-        }
     }
 }
 

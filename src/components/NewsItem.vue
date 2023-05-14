@@ -11,7 +11,7 @@
             </h5>
             <h3 class="article__title">{{ article.title }}</h3>
             <p class="article__text">{{ article.summary }}</p>
-            <a :href="article.url" class="article__read-more">
+            <a :href="article.url" class="article__read-more is__text-link">
                 <span>Read More</span>
             </a>
         </div>
@@ -29,7 +29,6 @@ export default {
     computed: {
         // @DEMO publish date into readable format
         friendlyDate() {
-            console.log(this.article.publishedAt);
             const event = new Date(this.article.publishedAt);
             let friendlyDate = event.toLocaleDateString(undefined, {
                 day: '2-digit',
@@ -162,14 +161,6 @@ export default {
                 position: relative;
                 z-index: 30;
             }
-
-            &::before {
-                @include pseudo;
-                width: 0;
-                z-index: 15;
-                border-bottom: 2px solid $light;
-                transition: width $t__faster ease-out;
-            }
         }
     }
 
@@ -201,12 +192,6 @@ export default {
 
             .article__read-more {
                 display: inline-block;
-
-                &:hover {
-                    &::before {
-                        width: 100%;
-                    }
-                }
             }
         }
     }

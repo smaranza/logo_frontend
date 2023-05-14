@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss">
 .home-section {
-    min-height: 100vh;
+    // min-height: 100vh;
     background-color: $light;
     color: $dark;
     position: relative;
@@ -57,6 +57,7 @@ export default {
         opacity: 1;
         overflow-y: visible;
         background: linear-gradient(180deg, $dark 0%, tone(dark, lighter) 100%);
+        margin-top: 476px;
         
         &::before, 
         &::after {
@@ -69,8 +70,13 @@ export default {
         
         &::before {
             min-height: 556px;
+            height: 556px;
             transform: translateY(calc(-100% + 4px));
             background-image: $wave__light-dark;
+            
+            @media (min-width: $breakpoint-2k__in) {
+                height: unset;
+            }
         }
         
         &::after {
@@ -94,10 +100,6 @@ export default {
                 }
             }
         }
-    }
-
-    &#news {
-        margin-bottom: $gap__v-xl * 8;
     }
 
     &#tabs {

@@ -1,6 +1,6 @@
 <template>
     <header>
-        <div class="header-inner wrapper flexxer">
+        <div class="header__inner wrapper flexxer">
             <BaseLogo type-color="#ffffff" :show-type="true"></BaseLogo>
             <BaseNav></BaseNav>
         </div>
@@ -21,7 +21,7 @@ import BaseNav from '@components/base/BaseNav.vue'
         background-color: rgba($dark, .80);
         padding: $gap__v-l 0;
 
-        .header-inner {
+        .header__inner {
             align-items: center;
             justify-content: space-between;
         }

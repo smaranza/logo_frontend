@@ -90,7 +90,6 @@ export default {
 
     .tab__cta {
         @include btn($accent);
-        border: 2px solid transparent;
     }
 
     .divider {
@@ -131,7 +130,7 @@ export default {
         }
 
         .divider {
-            // @demo: eventually create a contrast ratio utility
+            // @DEMO: eventually create a contrast ratio utility
             @if ($color == $secondary) { 
                 background-color: $dark;
             }
