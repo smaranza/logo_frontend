@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import Data from "@helpers/data-helper.json"
+import { localData } from "@helpers/data-helper"
 
 export default {
     data() {
         return {
-            menu: Data.navigation
+            menu: localData.navigation
         }
     },
     methods: {

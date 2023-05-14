@@ -2,7 +2,7 @@
     <div class="tab-container gridder g__span-12">
         <template v-for="(tab, i) in tabs" :key="i">
             <TabsItem 
-                v-if="i < maxItem"
+                v-if="i < maxItems"
                 url="#"
                 :color="getColorByIndex(i)"
                 class="tab-item g__span-4"
@@ -21,19 +21,19 @@
 <script>
 import TabsItem from '@components/TabsItem.vue';
 import ImageHelper from "@helpers/image-helper.js";
-import Data from "@helpers/data-helper.json";
+import { localData } from "@helpers/data-helper";
 
 const colorMap = [ "primary", "secondary", "tertiary" ];
 
 export default {
-    mixins: [ ImageHelper, Data ],
+    mixins: [ ImageHelper ],
     components: { TabsItem },
     props: {
-        maxItem: Number //@demo
+        maxItems: Number //@DEMO
     },
     data() {
         return {
-            tabs: Data.tabs
+            tabs: localData.tabs
         }
     },
     methods: {

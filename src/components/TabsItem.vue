@@ -99,11 +99,11 @@ export default {
 
     &:hover {
         background-color: rgba(tone($color, screen), 1);
-        // transform: scale(1.01);
+        transform: scale(1.01);
         
         &,
         .tab__title {
-            // @demo: eventually create a contrast ratio utility
+            // @DEMO: eventually create a contrast ratio utility
             @if ($color == $secondary) { 
                 color: $dark;
             }

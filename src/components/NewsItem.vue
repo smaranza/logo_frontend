@@ -1,20 +1,17 @@
 <template>
     <div class="news__item article">
         <div class="article__header">
-            <img 
-                :src="getFullPath(article.banner)"
-                class="article__banner"
-            />
+            <img :src="article.imageUrl" class="article__banner"/>
         </div>
         <div class="article__body">
             <h5 class="article__info"> 
                 <span class="article__date">{{ friendlyDate }}</span>
-                <span class="article__min-read">{{ minRead }} min read</span>
+                <!-- @DEMO localData only  -->
+                <!-- <span class="article__min-read">{{ minRead }} min read</span>  -->
             </h5>
             <h3 class="article__title">{{ article.title }}</h3>
-            <p class="article__text">{{ article.text }}</p>
-            <a :href="friendlyUrl" 
-                class="article__read-more">
+            <p class="article__text">{{ article.summary }}</p>
+            <a :href="article.url" class="article__read-more">
                 <span>Read More</span>
             </a>
         </div>
@@ -30,8 +27,10 @@ export default {
         article: Object
     },
     computed: {
+        // @DEMO publish date into readable format
         friendlyDate() {
-            const event = new Date(Date.now());
+            console.log(this.article.publishedAt);
+            const event = new Date(this.article.publishedAt);
             let friendlyDate = event.toLocaleDateString(undefined, {
                 day: '2-digit',
                 month: '2-digit',
@@ -39,6 +38,7 @@ export default {
             }).replaceAll('/', '.');
             return friendlyDate
         },
+        // @DEMO localData only: generates seo-friendly slug for given title
         friendlyUrl() {
             // news blog base url
             const newsUrl = '/path-to-blog/';
@@ -48,10 +48,11 @@ export default {
             let detailUrl = this.slugify(shortTitle);
             return newsUrl + detailUrl
         },
+        // @DEMO localData only:calculates minutes of read for given article
         minRead() {
             // average reading words per minute
             const avgWPM = 250; 
-            let wordCount = this.article.text.split(" ").length;
+            let wordCount = this.article.summary.split(" ").length;
             // always get a value >= 1 Min
             let minutes = Math.ceil(wordCount / avgWPM);
             return minutes
@@ -131,6 +132,11 @@ export default {
         .article__title {
             color: $primary;
             @include font-headline;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
         }
 
         .article__text {
@@ -184,6 +190,7 @@ export default {
 
             .article__title {
                 margin-bottom: $gap__v-m;
+                -webkit-line-clamp: unset;
             }
 
             .article__text {

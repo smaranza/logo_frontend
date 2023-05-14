@@ -1,7 +1,7 @@
 <template>
     <section id="news" class="home-section">
         <div class="section-inner">
-            <NewsBlock :max-item="3"></NewsBlock>
+            <NewsBlock :max-items="3"></NewsBlock>
         </div>
     </section>
     <section id="timeline" class="home-section">
@@ -13,7 +13,7 @@
     <section id="tabs" class="home-section">
         <div class="section-inner">
             <h2 class="section-display">Lorem ipsum dolor sit amet consectetuer?</h2>
-            <TabsBlock :max-item="3" />
+            <TabsBlock :max-items="3" />
         </div>
     </section>
 </template>
@@ -62,19 +62,19 @@ export default {
         &::after {
             @include pseudo;
             width: 100vw;
-            // min-height: 556px;
             background-size: cover;
             background-repeat: no-repeat;
             aspect-ratio: 2.6 / 1 ;
         }
         
         &::before {
-            transform: translateY(calc(-100% + 2px));
+            min-height: 556px;
+            transform: translateY(calc(-100% + 4px));
             background-image: $wave__light-dark;
         }
         
         &::after {
-            top: calc(100% - 2px);
+            top: calc(100% - 4px);
             background-image: $wave__dark-light;
             z-index: 10;
         }

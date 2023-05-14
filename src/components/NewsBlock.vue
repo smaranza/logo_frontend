@@ -1,8 +1,8 @@
 <template>
    <div class="news-container gridder g__span-12">
         <template v-for="article in news" :key="article.id">
-            <NewsItem 
-                v-if="article.id < maxItem"
+            <NewsItem
+                v-if="article" 
                 :article="article"
                 class="tab-item g__span-4"
             />
@@ -12,26 +12,31 @@
 
 <script>
 import NewsItem from '@components/NewsItem.vue';
-import ImageHelper from "@helpers/image-helper.js";
-import Data from "@helpers/data-helper.json";
+import { localData, SNAPI } from "@helpers/data-helper";
 
 const colorMap = [ "primary", "secondary", "tertiary" ];
 
 export default {
-    mixins: [ ImageHelper, Data ],
     components: { NewsItem },
     props: {
-        maxItem: Number //@demo
+        maxItems: Number 
     },
     data() {
         return {
-            news: Data.news
+            // news: localData.news // @DEMO localData only
+            news: []
         }
     },
     methods: {
         getColorByIndex(index) {
             return colorMap[index % 3];
+        },
+        async getLatestNews() {
+            this.news = await SNAPI.fetchLatestNews(this.maxItems);
         }
+    },
+    mounted() {
+        this.getLatestNews()
     }
 }
 </script>

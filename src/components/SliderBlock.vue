@@ -40,15 +40,15 @@
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 import BaseIcon from '@components/base/BaseIcon.vue'
 import ImageHelper from "@helpers/image-helper.js";
-import Data from "@helpers/data-helper.json";
+import { localData } from "@helpers/data-helper";
 import 'vue3-carousel/dist/carousel.css'
 
 export default {
-    mixins: [ ImageHelper, Data ],
+    mixins: [ ImageHelper ],
     components: { Carousel, Slide, Pagination, Navigation, BaseIcon },
     data() {
         return {
-            slides: Data.slides
+            slides: localData.slides
         }
     }
 }

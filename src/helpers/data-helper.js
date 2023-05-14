@@ -1,5 +1,44 @@
-{
-    "navigation": [
+import axios from "axios";
+
+/*
+    Spaceflight News API (SNAPI) V3
+
+    "enables developers to add the latest spaceflight news to their apps."
+    source: https://spaceflightnewsapi.net
+*/
+const SNAPI = {
+    
+    // create axios instance for reusable options
+    SNAPIClient: axios.create({
+        baseURL: 'https://api.spaceflightnewsapi.net/v3/',
+        headers: {
+            // 'x-api-key': process.env.API_KEY @DEMO
+        }
+    }),
+
+    /* 
+        Fetch of most recent spaceflight articles
+        (request already retrieves latest entries)
+        @param (int) limit max results
+    */
+    fetchLatestNews: async function(limitResults) {
+        const response = await this.SNAPIClient.get( 'articles', {
+            params : {
+                _limit: limitResults
+            }
+        }).catch(function (error) {
+            console.log(error);
+        })
+
+        return response.data
+    }
+}
+
+/*
+    Local Data for @DEMO purposes
+*/
+const localData = {
+    navigation: [
         {
             "target": "#target",
             "name": "Slider"
@@ -17,7 +56,7 @@
             "name": "Tab"
         }
     ],
-    "socials": [
+    socials: [
         {
             "id": 0,
             "name": "facebook",
@@ -44,7 +83,7 @@
             "url": "#"
         }
     ],
-    "legals": [
+    legals: [
         {
             "id": 0,
             "name": "Term & Conditions",
@@ -66,7 +105,7 @@
             "url": "#"
         }
     ],
-    "tabs": [
+    tabs: [
         {
             "title": "Tab Rosa",
             "media": "sveglia.png",
@@ -98,7 +137,7 @@
             "cta": "Call to Action"
         }
     ],
-    "slides": [
+    slides: [
         {
             "id": 0,
             "title": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
@@ -140,7 +179,7 @@
             }
         }
     ],
-    "news": [
+    news: [
         {
             "id": 0,
             "date": "22.11.2023",
@@ -171,3 +210,5 @@
         }
     ]
 }
+
+export { localData, SNAPI }

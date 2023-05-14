@@ -39,15 +39,14 @@
 <script>
 import BaseLogo from '@components/base/BaseLogo.vue'
 import BaseIcon from '@components/base/BaseIcon.vue'
-import Data from "@helpers/data-helper.json";
+import { localData } from "@helpers/data-helper";
 
 export default {
-    mixins: [ Data ],
     components: { BaseLogo, BaseIcon },
     data() {
         return {
-            socialList: Data.socials,
-            legalList: Data.legals
+            socialList: localData.socials,
+            legalList: localData.legals
         }
     }
 }
