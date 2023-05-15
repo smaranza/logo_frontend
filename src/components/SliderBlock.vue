@@ -136,6 +136,10 @@ export default {
             i {
                 position: relative;
                 left: $gap__h-m;
+                
+                svg {
+                    height: 46px;
+                }
             }
         }
 

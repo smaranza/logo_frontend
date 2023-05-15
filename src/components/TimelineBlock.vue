@@ -27,21 +27,6 @@
                 </div>
             </li>
         </ol>
-
-        <!-- <svg class="timeline__path g__start-4  g__span-6 " viewBox="0 0 570 1074" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path :d="`M5 ${points[1]} H${points[2]}C${points[0]} ${points[1]} ${points[3]} 33 ${points[3]} 68V100C${points[3]} 135 ${points[0]} 163 ${points[2]} 163H68C33 163 ${points[1]} 192 ${points[1]} 227V529C5 564 33 592 68 592H${points[2]}C${points[0]} 592 ${points[3]} 621 ${points[3]} 656V6878C${points[3]} 72216 ${points[0]} 751 ${points[2]} 751H68C33 751 ${points[1]} 779 ${points[1]} 814V846C5 881 33 910 68 910H${points[2]}C${points[0]} 910 ${points[3]} 938 ${points[3]} 973V1005C${points[3]} 1040 ${points[0]} 1069 ${points[2]} 1069H285`" stroke="white" stroke-width="10"/>
-        </svg> -->
-
-        <!-- <svg class="timeline__path g__start-4  g__span-6 " viewBox="0 0 570 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path :d="`M5 0.0800781C5 35.0161 33.5981 63.6 68.5514 63.6H501.449C536.402 63.6 565 92.1841 565 127V200`" stroke="white" stroke-width="10"/>
-        </svg> -->
-
-        <!-- <svg width="570" height="159" viewBox="0 0 570 159" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
-
-<!-- </svg> -->
-
-
-
     </div>
 </template>
 

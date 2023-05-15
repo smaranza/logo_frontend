@@ -40,19 +40,19 @@ const SNAPI = {
 const localData = {
     navigation: [
         {
-            "target": "#target",
+            "target": "#slider",
             "name": "Slider"
         },
         {
-            "target": "#target",
+            "target": "#news",
             "name": "News"
         },
         {
-            "target": "#target",
+            "target": "#timeline",
             "name": "Percorso"
         },
         {
-            "target": "#target",
+            "target": "#tabs",
             "name": "Tab"
         }
     ],

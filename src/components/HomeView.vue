@@ -24,14 +24,14 @@ import TimelineBlock from '@components/TimelineBlock.vue'
 import TabsBlock from '@components/TabsBlock.vue'
 
 export default {
-    components: { NewsBlock, TimelineBlock, TabsBlock }
+    components: { NewsBlock, TimelineBlock, TabsBlock },
 }
 </script>
 
 <style lang="scss">
 .home-section {
     // min-height: 100vh;
-    background-color: $light;
+    // background-color: $light;
     color: $dark;
     position: relative;
 
@@ -57,7 +57,7 @@ export default {
         opacity: 1;
         overflow-y: visible;
         background: linear-gradient(180deg, $dark 0%, tone(dark, lighter) 100%);
-        margin-top: 476px;
+        margin: 476px 0 304px;
         
         &::before, 
         &::after {
@@ -102,8 +102,12 @@ export default {
         }
     }
 
+    &#news {
+        z-index: 50;
+    }
+
     &#tabs {
-        padding-top: $gap__v-xl * 6;
+        // padding-top: $gap__v-xl * 6;
     }
 }
 </style>
