@@ -12,6 +12,8 @@ To develop the given designs, the following packages were included:
 
 Throught the code, it is possible to encounter `@DEMO`: these are helpful comments! (i.e. explanations, production environment equivalent, next steps, etc.)
 
+NB: Small layout and styling adjustments were applied in order to unify the design system and develop reusable common elements.
+
 ## Project structure
 ### **[Assets](src/assets)**
 This folder contains the organized static assets for the project, divided by _graphics_, _images_, _icons_ and _styles_. [/styles/base._scss](/src/assets/styles/_base.scss) contains pre-processor variables, mixins and utils
@@ -19,6 +21,9 @@ This folder contains the organized static assets for the project, divided by _gr
 This folder contains all the vue components used in the project. [/base](src/components/base/) subfolder contains "atomic" level elements, such as logo, icons, navigation and so on.
 ### **[Helpers](/src/helpers/)**
 This folder contains helpful reusable functions and data services, to easily manage data.
+
+### Data
+Components use static data, retrieved as objects via [data-helper](/src/helpers/data-helper.js) `localData`. However [`NewsBlock`](/src/components/NewsBlock.vue) fetches articles via [Spaceflight News API (SNAPI) V3](https://spaceflightnewsapi.net).
 
 ## How to test
 In order to test the project it is necessary to locally clone this repository. First of all, make sure to have installed [Node.js](https://nodejs.org/).
@@ -30,4 +35,4 @@ In order to test the project it is necessary to locally clone this repository. F
     npm install
     npm run dev
     ```
-1. The landing page will now be available to be tested on local `localhost`
+1. The landing page will now be available to be tested on `localhost`
