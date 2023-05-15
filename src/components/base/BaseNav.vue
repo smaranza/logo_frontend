@@ -71,6 +71,7 @@ export default {
 <style lang="scss">
     nav {
         position: relative;
+
         @media (min-width: $breakpoint-mobile__ex) {
             margin-right: $gap__h-xl;
         }
@@ -81,13 +82,17 @@ export default {
             @media (min-width: $breakpoint-mobile__ex) {
                 flex-flow: row;
             }
-
+            
             .nav__item {
-                margin: 0 $gap__h-m;
+                padding: $gap__v-s $gap__h-s;
                 font-family: $f-family__mono;
                 font-weight: $f-weight__medium;
                 font-size: $f-size__m;
                 text-transform: uppercase;
+                
+                @media (min-width: $breakpoint-mobile__ex) {
+                    padding: 0 $gap__h-m;
+                }
 
                 &.is__here .nav__link {
                     color: $primary;

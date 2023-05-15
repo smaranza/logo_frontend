@@ -25,14 +25,21 @@ $gap__h-xl: $gap__h * 3.25;    // 65px
 @mixin wrapper($mode: boxed) {
     display: block;
     margin: 0 auto;
+    padding: 0 $gap__h-s;
 
     @if $mode == full {
         width: 100%;
-        padding: 0 4%;
+
+        @media (min-width: $breakpoint-mobile__ex) {
+            padding: 0 4%;
+        }
 
     } @else {
-        width: 92%;
-        max-width: 1320px;
+        @media (min-width: $breakpoint-mobile__ex) {
+            width: 92%;
+            max-width: 1320px;
+            padding: 0;
+        }
     }
 }
 

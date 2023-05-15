@@ -3,8 +3,7 @@
         <div class="header__inner">
             <BaseLogo type-color="#ffffff" :show-type="true"></BaseLogo>
             <BaseIcon name="chevron-left" class="menu-trigger" @click="toggleMenu"/>
-            <BaseNav>
-            </BaseNav>
+            <BaseNav @hook-click="toggleMenu"></BaseNav>
         </div>
     </header>
 </template>
@@ -17,6 +16,9 @@ import BaseIcon from '@components/base/BaseIcon.vue'
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+const minimalCls = 'is__minimal';
+const activeCls = 'is__active';
+
 export default {
     components: { BaseLogo, BaseNav, BaseIcon },
     beforeMount() {
@@ -25,7 +27,6 @@ export default {
     mounted() {
         const header = this.$refs.header;
         const logoType = header.querySelector('.logo__type');
-        const minimalCls = 'is__minimal';
         let isMinimal = false;
 
         ScrollTrigger.create({
@@ -39,7 +40,7 @@ export default {
             onToggle: () => {
                 gsap.to(logoType, {
                     duration: .3, 
-                    yPercent: isMinimal ? 0 : -100,
+                    xPercent: isMinimal ? 0 : -100,
                     opacity: isMinimal ? 1 : 0,
                     ease: "power2.inOut",
                 })
@@ -52,18 +53,17 @@ export default {
     },
     methods: {
         toggleMenu(e) {
-            if (window.innerWidth < 960) {
-                let activeCls = 'is__active';
-                let openCls = 'is__open';
-                let menuTrigger =  e ? e.currentTarget : document.querySelector('.menu-trigger');
+            if (window.innerWidth < 960) {  // $breakpoint-mobile__ex: 960px;
+                const header = this.$refs.header;
+                let menuTrigger =  e ? e.currentTarget : header.querySelector('.menu-trigger');
                 let menuNav = menuTrigger.parentNode.querySelector(`.nav__list`)
-                let menuEntries = menuNav.querySelectorAll('.nav__link');
+                let menuEntries = menuNav.querySelectorAll('.nav__item');
                 let timeline = this.tl;
     
                 let isMenuOpen = menuTrigger.classList.contains(activeCls)
     
-                timeline.to(menuEntries, {
-                    duration: .8, 
+                timeline.to( menuEntries, {
+                    duration: .3, 
                     xPercent: isMenuOpen ? 0 : -100,
                     opacity: isMenuOpen ? 0 : 1,
                     stagger: .1,
@@ -71,7 +71,6 @@ export default {
                 }).play()
     
                 menuTrigger.classList.toggle(activeCls)
-                menuNav.classList.toggle(openCls)
             }
         }
     }
@@ -86,6 +85,7 @@ export default {
         z-index: 5000;
         background-color: rgba($dark, .80);
         transition: padding $t__base;
+
         @media (min-width: $breakpoint-mobile__ex) {
             padding: $gap__v-l 0;
         }
@@ -96,16 +96,25 @@ export default {
             @include flexxer;
             align-items: center;
             justify-content: space-between;
+            padding: $gap__v-xs $gap__h-s;
 
-            .logo__wrapper {
+            @media (min-width: $breakpoint-mobile__ex) {
                 padding: 0;
+            }
+            
+            .logo__wrapper {
                 transition: padding $t__fast;
+                padding-right: $gap__h-m;
+
+                @media (min-width: $breakpoint-mobile__ex) {
+                    padding: 0;
+                }
             }
             
             nav {
                 position: absolute;
                 top: 100%;
-                right: 0;
+                left: 0;
                 width: 100%;
                 height: 100%;
                 transition: $t__fast ease;
@@ -117,17 +126,25 @@ export default {
                     height: auto;
                 }
                 
-                .nav__links {
+                .nav__list {
                     margin: 0;
 
-                    .nav__link {
-                        padding: 1rem 2rem;
+                    .nav__item {
                         text-align: right;
-                        opacity: 0;
-                        transform: translate( 100%, 0);
+                        
+                        @media (max-width: $breakpoint-mobile__in) {
+                            opacity: 0;
+                            transform: translate(100%, 0);
+                            background-color: rgba($dark, .80);
+                            // padding: $gap__v-xs 0;
 
-                        &:last-child {
-                            padding-bottom: 2rem;
+                            // &:last-child {
+                            //     padding-bottom: $gap__v-s;
+                            // }
+
+                            // &:first-child {
+                            //     padding-top: $gap__v-s;
+                            // }
                         }
                     }
                 }
@@ -136,18 +153,42 @@ export default {
             .menu-trigger {
                 display: inline-block;
                 width: 20px;
+                transform-origin: center;
+                transition: transform $t__fast ease;
+                
+                &.is__active {
+                    transform: scaleX(-1);
+                }
+                
+                @media (min-width: $breakpoint-mobile__ex) {
+                    display: none;
+                }
             }
         }
 
         &.is__minimal {
             padding: 0;
-
-            .logo__wrapper {
-                padding: $gap__v-xs 0;
+            
+            .header__inner {
+                padding: 0 $gap__h-s;
+                
+                .logo__wrapper {
+                    padding-right: $gap__h-xl;
+                }
             }
 
-            nav {
-                margin-right: 0;
+            @media (min-width: $breakpoint-mobile__ex) {
+                .header__inner {
+                    padding: 0;
+             
+                    .logo__wrapper {
+                        padding-top: $gap__v-xs $gap__h-xs 0 0 ;
+                    }
+
+                    nav {
+                        margin-right: 0;
+                    }
+                }
             }
         }
     }
