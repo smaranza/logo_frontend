@@ -60,9 +60,13 @@ export default {
 
 <style lang="scss">
 footer {
-    padding: $gap__v-xl 0;
+    padding: $gap__v-l 0;
     position: relative;
     background-color: $dark;
+
+    @media (min-width: $breakpoint-mobile__ex) {
+        padding: $gap__v-xl 0;
+    }
 
     &::before {
         @include pseudo;
@@ -78,7 +82,11 @@ footer {
 
     .footer__inner {
         .footer__content-top {
-            padding: $gap__v-l 0;
+            padding: $gap__v-s 0;
+
+            @media (min-width: $breakpoint-mobile__ex) {
+                padding: $gap__v-xl 0;
+            }
         }
 
         .footer__content-bottom {
@@ -89,6 +97,7 @@ footer {
             .footer__column {
                 .legal__list {
                     margin-bottom: $gap__h-m;
+                    flex-flow: row wrap;
 
                     .legal__entry {
                         .legal__link {

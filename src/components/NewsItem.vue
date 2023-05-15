@@ -116,10 +116,14 @@ export default {
         @include flexxer(v);
         position: absolute;
         bottom: 0;
-        padding: $gap__v-m $gap__h-m;
+        padding: $gap__v-s $gap__h-s;
         z-index: 50;
         transition: height $t__base ease;
         row-gap: $gap__v-s;
+        
+        @media (min-width: $breakpoint-mobile__ex) {
+            padding: $gap__v-m $gap__h-m;
+        }
 
         .article__info {
             @include flexxer;

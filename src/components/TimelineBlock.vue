@@ -111,9 +111,12 @@ $stepColors: (
 
 .timeline {
     position: relative;
-    padding-top: $gap__h-xl;
     z-index: 30;
     @include gridder;
+
+    @media (min-width: $breakpoint-mobile__ex) {
+        padding-top: $gap__h-xl;
+    }
     
     .timeline__list {
         @include gridder;
@@ -160,6 +163,11 @@ $stepColors: (
                     border-radius: 50%;
                     position: relative;
                     cursor: pointer;
+                    max-width: 25%;
+
+                    @media (min-width: $breakpoint-mobile__ex) {
+                        max-width: unset;
+                    }
                     
                     &::after {
                         content: "";
@@ -177,6 +185,8 @@ $stepColors: (
                         align-items: center;
                         justify-content: center;
                     }
+
+                   
                 }
             }
 
@@ -185,6 +195,12 @@ $stepColors: (
                 @include g__span(4);
                 grid-row-start: 2;
                 margin-bottom: 0;
+                padding: $gap__h-m;
+                
+                @media (min-width: $breakpoint-desktop__ex) {
+                    margin-left: auto;
+                    padding: 0;
+                }
 
                 h3 {
                     @include font-headline;
@@ -201,11 +217,25 @@ $stepColors: (
                     left: unset;
                     text-align: right;
                 }
+
+                .step__content {
+                    padding-right: $gap__h-l;
+                }
             }
 
             &.side__right {
                 .step__header {
                     @include g__start(6);
+
+                    .step__icon {
+                        @media (max-width: $breakpoint-mobile__in) {
+                            margin-left: auto;
+                        }
+                    }
+                }
+
+                .step__content {
+                    padding-left: $gap__h-xl;
                 }
             }
 
@@ -224,7 +254,9 @@ $stepColors: (
                 }
 
                 .step__content {
-                    margin-bottom: $gap__h-xl;
+                    @media (min-width: $breakpoint-desktop__ex) {
+                        margin-bottom: $gap__h-xl;
+                    }
                 }
             }
         }

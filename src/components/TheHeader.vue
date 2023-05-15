@@ -18,6 +18,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const minimalCls = 'is__minimal';
 const activeCls = 'is__active';
+const openCls = 'is__open';
 
 export default {
     components: { BaseLogo, BaseNav, BaseIcon },
@@ -71,6 +72,7 @@ export default {
                 }).play()
     
                 menuTrigger.classList.toggle(activeCls)
+                menuNav.classList.toggle(openCls)
             }
         }
     }
@@ -119,8 +121,10 @@ export default {
                 height: 100%;
                 transition: $t__fast ease;
                 transition-property: background-color, margin-right;
-
+                visibility: hidden;
+                
                 @media (min-width: $breakpoint-mobile__ex) {
+                    visibility: visible;
                     position: relative;
                     width: unset;
                     height: auto;
@@ -129,6 +133,12 @@ export default {
                 .nav__list {
                     margin: 0;
 
+                    &:not(.is__open) {
+                        @media (max-width: $breakpoint-mobile__in) {
+                            display: none;
+                        }
+                    }
+
                     .nav__item {
                         text-align: right;
                         
@@ -136,15 +146,6 @@ export default {
                             opacity: 0;
                             transform: translate(100%, 0);
                             background-color: rgba($dark, .80);
-                            // padding: $gap__v-xs 0;
-
-                            // &:last-child {
-                            //     padding-bottom: $gap__v-s;
-                            // }
-
-                            // &:first-child {
-                            //     padding-top: $gap__v-s;
-                            // }
                         }
                     }
                 }

@@ -68,6 +68,13 @@ export default {
                 .carousel__slide-inner {
                     @include wrapper(full);
                     @include gridder;
+                    height: 100%;
+                    justify-content: flex-end;
+                    padding-bottom: $gap__v-xl * 2;
+                    
+                    @media (min-width: $breakpoint-mobile__ex) {
+                        height: unset;
+                    }
                     
                     .carousel__slide-content {
                         @include g__span(5);
@@ -75,6 +82,10 @@ export default {
                         @include flexxer(v);
                         row-gap: $gap__v-l;
                         text-align: left;
+                        
+                        @media (min-width: $breakpoint-mobile__ex) {
+                            text-align: left;
+                        }
 
                         .carousel__slide-desc {
                             @include font-body();
@@ -108,12 +119,17 @@ export default {
                 }
 
                 &:nth-child(even) {
-                    .carousel__slide-content {
-                        @include g__start(7);
-                        text-align: right;
-
-                        .carousel__slide-cta {
-                            align-self: flex-end;
+                    .carousel__slide-inner {
+                        justify-content: flex-start;
+                        padding-top: $gap__v-xl * 2;
+                        
+                        .carousel__slide-content {
+                            @include g__start(7);
+                            text-align: right;
+    
+                            .carousel__slide-cta {
+                                align-self: flex-end;
+                            }
                         }
                     }
                 }

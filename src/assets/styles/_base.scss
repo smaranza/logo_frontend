@@ -111,20 +111,32 @@ $f-size__xxl: $f-size__base * 3.75; // 60px
     @include font-body();
     font-family: $f-family__mono;
     font-weight: $f-weight__bold;
-    font-size: $f-size__l;
+    font-size: $f-size__m;
     line-height: 1.25;
+    
+    @media (min-width: $breakpoint-mobile__ex) {
+        font-size: $f-size__l;
+    }
 }
 
 @mixin font-display() {
     @include font-headline();
-    font-size: $f-size__xxl;
+    font-size: $f-size__l;
     line-height: 1.33;
+    
+    @media (min-width: $breakpoint-mobile__ex) {
+        font-size: $f-size__xxl;
+    }
 }
 
 @mixin font-cta() {
     @include font-body();
     font-weight: $f-weight__bold;
-    font-size: $f-size__m;
+    font-size: $f-size__s;
+
+    @media (min-width: $breakpoint-mobile__ex) {
+        font-size: $f-size__m;
+    }
 }
 
 
@@ -190,12 +202,18 @@ $tones: (
     text-transform: uppercase;
     display: inline-block;
     width: auto;
-    padding: $gap__h-s;
+    padding:  $gap__h-xs $gap__h-s;
     background: $color;
     color: $light;
-    border-radius: $gap__v-m;
+    border-radius: $gap__v-s;
     transition: background-color $t__fast;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
+    
+    @media (min-width: $breakpoint-mobile__ex) {
+        border-radius: $gap__v-m;
+        padding: $gap__h-m;
+        border-width: 2px;
+    }
 
     &:visited {
         color: $light;

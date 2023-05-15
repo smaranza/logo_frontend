@@ -84,7 +84,7 @@ export default {
             }
             
             .nav__item {
-                padding: $gap__v-s $gap__h-s;
+                padding: $gap__v-xs $gap__h-s;
                 font-family: $f-family__mono;
                 font-weight: $f-weight__medium;
                 font-size: $f-size__m;

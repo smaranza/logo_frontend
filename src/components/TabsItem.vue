@@ -46,20 +46,30 @@ export default {
     $accent: rgba(tone($color, overlay), 1);
     
     @include flexxer(v);
-    padding: $gap__v-l $gap__h-l calc( $gap__v-m + $gap__v-xl);
+    padding: $gap__v-l $gap__h-s;
     background-color: $light;
     align-items: center;
     justify-content: flex-start;
     border-radius: $gap__h-m;
-    box-shadow: 0px 0px 20px 10px rgba($black, 0.1);
+    border: 1px solid $accent;
     transition-duration: $t__base;
     transition-property: background-color, color;
+    
+    @media (min-width: $breakpoint-mobile__ex) {
+        box-shadow: 0px 0px 20px 10px rgba($black, 0.1);
+        padding: $gap__v-l $gap__h-l calc( $gap__v-m + $gap__v-xl);
+        border: none;
+    }
 
     .tab__title {
         color: $accent;
-        font-size: $f-size__xl;
+        font-size: $f-size__m;
         font-family: $f-family__sans;
         text-transform: uppercase;
+        
+        @media (min-width: $breakpoint-mobile__ex) {
+            font-size: $f-size__xl;
+        }
     }
 
     .tab__media {
