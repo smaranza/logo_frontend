@@ -1,10 +1,10 @@
 <template>
-   <div class="news-container gridder g__span-12">
+   <div class="news__container gridder g__span-12">
         <template v-for="article in news" :key="article.id">
             <NewsItem
                 v-if="article" 
                 :article="article"
-                class="tab-item g__span-4"
+                class="g__span-4"
             />
         </template>
     </div>
@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss">
-.news-container {
+.news__container {
     position: relative;
     padding-top: $gap__h-xl;
     z-index: 30;

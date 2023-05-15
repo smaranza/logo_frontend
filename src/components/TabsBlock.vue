@@ -1,5 +1,5 @@
 <template>
-    <div class="tab-container gridder g__span-12">
+    <div class="tab-container gridder g__span-12 animate">
         <template v-for="(tab, i) in tabs" :key="i">
             <TabsItem 
                 v-if="i < maxItems"

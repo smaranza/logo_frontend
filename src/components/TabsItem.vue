@@ -53,7 +53,7 @@ export default {
     border-radius: $gap__h-m;
     box-shadow: 0px 0px 20px 10px rgba($black, 0.1);
     transition-duration: $t__base;
-    transition-property: background-color, color, transform;
+    transition-property: background-color, color;
 
     .tab__title {
         color: $accent;
@@ -98,7 +98,7 @@ export default {
 
     &:hover {
         background-color: rgba(tone($color, screen), 1);
-        transform: scale(1.01);
+        // transform: scale(1.01);
         
         &,
         .tab__title {

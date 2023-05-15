@@ -6,13 +6,13 @@
                 class="timeline__step"
                 :class="stepVariantCls(index)"
             >
-                <div class="step__header" @click="toggleStep($event, index)" ref="panelHeader">
+                <div class="step__header animate" @click="toggleStep($event, index)" ref="panelHeader">
+                    <div class="step__icon g__span-1">
+                        <BaseIcon :name="stepIcon(index + 1)"/>
+                    </div>
                     <div class="step__title">
                         <span class="step__title-marker">{{ index + 1 }}.</span>
                         Lorem Ipsum
-                    </div>
-                    <div class="step__icon g__span-1">
-                        <BaseIcon :name="stepIcon(index + 1)"/>
                     </div>
                 </div>
                 <div class="step__content">
