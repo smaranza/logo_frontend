@@ -69,10 +69,15 @@ export default {
                     opacity: isMenuOpen ? 0 : 1,
                     stagger: .1,
                     ease: "power2.inOut",
+                    onStart: () => {
+                        if (!isMenuOpen) menuNav.parentNode.classList.toggle(openCls)
+                    },
+                    onComplete: () => {
+                        if (isMenuOpen) menuNav.parentNode.classList.toggle(openCls)
+                    }
                 }).play()
-    
+
                 menuTrigger.classList.toggle(activeCls)
-                menuNav.classList.toggle(openCls)
             }
         }
     }
@@ -121,7 +126,7 @@ export default {
                 height: 100%;
                 transition: $t__fast ease;
                 transition-property: background-color, margin-right;
-                visibility: hidden;
+                
                 
                 @media (min-width: $breakpoint-mobile__ex) {
                     visibility: visible;
@@ -130,14 +135,14 @@ export default {
                     height: auto;
                 }
                 
+                &:not(.is__open) {
+                    @media (max-width: $breakpoint-mobile__in) {
+                        visibility: hidden;
+                    }
+                }
+                
                 .nav__list {
                     margin: 0;
-
-                    &:not(.is__open) {
-                        @media (max-width: $breakpoint-mobile__in) {
-                            display: none;
-                        }
-                    }
 
                     .nav__item {
                         text-align: right;
